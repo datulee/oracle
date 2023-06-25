@@ -1,0 +1,79 @@
+create user demetre identified by mikaberidze
+default TABLESPACE users QUOTA UNLIMITED on users;
+grant create session, create table, create view to demetre;
+grant select, update on hr.employees to demetre; 
+create role role_mikaberidze;
+grant create sequence, create synonym to role_mikaberidze; 
+grant select, insert on hr.departments to role_mikaberidze; 
+grant role_mikaberidze to demetre;
+
+
+3. create table exam (exam_id number(4) primary key, exam_name varchar2(20) unique);
+create table students (id number(4) primary key, last_name varchar2(20) not null,
+exam_id number(4) REFERENCES exam(exam_id));
+
+4.
+create table workers as 
+select * from hr.employees where department_id >50;
+
+5.
+create view my_vu_demetre as
+select * from workers where department_id =60
+with check option;
+
+amokitxvadi
+
+create view my_vu_mikaberidze as
+select * from workers where department_id =60
+with read only;
+
+6.
+create sequence mikaberidze_seq start with 12 increment by 6 maxvalue 450;
+
+7.
+create index index_mikaberidze on students(last_name);
+
+8.
+create synonym vu_mikaberidze for my_vu_aleksandre;
+
+9.
+insert into exam values (mikaberidze_seq.nextval, 'excel');
+insert into exam values (mikaberidze_seq.nextval, 'python');
+insert into students (id, last_name)
+select employee_id, last_name from workers;
+commit;
+
+10.
+update students set exam_id = (select min(exam_id) from exam) where length(last_name)<7;
+
+11.
+delete from students where exam_id is null or exam_id = (select max(exam_id) from exam);
+
+12.
+with tab_demetre as
+(select department_id department, count(*) stuff, sum(salary) full_salary 
+from workers
+group by department_id)
+select * from tab_demetre;
+
+13.
+select employee_id, last_name, salary, hire_date 
+from hr.employees
+where regexp_like(last_name, 'sa|ta|mo|ka|pi|lu|ro')
+
+
+14.
+drop table workers;
+drop sequence mikaberidze_seq;
+drop view my_vu_demetre;
+drop index index_mikaberidze;
+drop synonym vu_mikaberidze;
+
+15.
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+CREATE TABLE btu_gamers (
+id NUMBER(6) PRIMARY KEY,
+name VARCHAR2(30) UNIQUE,
+level1 NUMBER(3),
+status_id VARCHAR2(10)
+);
+
+
+
+2.
+create sequence my_gamers_seq
+start with 2
+increment by 10;
+
+3.
+insert into btu_gamers values(my_gamers_seq.nextval,&#39;nikolas&#39;,15,&#39;beginner&#39;);
+insert into btu_gamers values(my_gamers_seq.nextval,&#39;marcy&#39;,42,&#39;master&#39;);
+commit
+select * from btu_gamers;
+
+
+4.
+Create index my_idx on btu_gamers(status_id);
+
+5.
+create table my_locs
+as
+select * from hr.locations
+where street_address like &#39;%k%&#39;;
+select * from my_locs
+
+6.
+create view emp_v
+as
+select * from hr.locations
+where rownum &lt;= 12;
+
+7.
+update btu_gamers
+set level1 = 19
+where status_id =&#39;beginner&#39;;
+
+select * from btu_gamers
+
+8.
+delete from my_locs where postal_code like &#39;%6%&#39;;
+
+
+9.
+create synonym gamer for btu_gamers;
+
+10.
+drop btu_gamers;
+drop my_locs....
