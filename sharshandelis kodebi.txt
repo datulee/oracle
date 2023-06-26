@@ -13,8 +13,8 @@ start with 2
 increment by 10;
 
 3.
-insert into btu_gamers values(my_gamers_seq.nextval,&#39;nikolas&#39;,15,&#39;beginner&#39;);
-insert into btu_gamers values(my_gamers_seq.nextval,&#39;marcy&#39;,42,&#39;master&#39;);
+insert into btu_gamers values(my_gamers_seq.nextval,'nikolas',15,'beginner');
+insert into btu_gamers values(my_gamers_seq.nextval,'marcy',42,'master');
 commit
 select * from btu_gamers;
 
@@ -26,7 +26,7 @@ Create index my_idx on btu_gamers(status_id);
 create table my_locs
 as
 select * from hr.locations
-where street_address like &#39;%k%&#39;;
+where street_address like '%k%';
 select * from my_locs
 
 6.
@@ -38,12 +38,12 @@ where rownum &lt;= 12;
 7.
 update btu_gamers
 set level1 = 19
-where status_id =&#39;beginner&#39;;
+where status_id ='beginner'
 
 select * from btu_gamers
 
 8.
-delete from my_locs where postal_code like &#39;%6%&#39;;
+delete from my_locs where postal_code like '%6%'
 
 
 9.
