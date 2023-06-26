@@ -33,7 +33,7 @@ select * from my_locs
 create view emp_v
 as
 select * from hr.locations
-where rownum &lt;= 12;
+where rownum <= 12;
 
 7.
 update btu_gamers
